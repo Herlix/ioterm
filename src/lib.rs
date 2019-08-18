@@ -65,17 +65,15 @@ mod tests {
     use super::*;
     #[test]
     fn case_insensitive() {
-        let query = "rUsT";
+        let exptexted = vec!["Rust:", "Trust me."];
         let content = "\
 Rust:
 safe, fast, productive.
 Pick three.
 Trust me.";
 
-        assert_eq!(
-            vec!["Rust:", "Trust me."],
-            search_insensitive(query, content)
-        );
+        assert_eq!(exptexted.clone(), search_insensitive("rUsT", content));
+        assert_eq!(exptexted.clone(), search_insensitive("Rust", content));
     }
 
     #[test]
